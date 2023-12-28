@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TTCP Live - Scoreboard</title>
+        <link rel="stylesheet" type="text/css" href="/pages/scoreboard/style.css" />
+    </head>
+    <body>
+        <div class="scoreboard">
+            <div class="scoreboard-container">
+                <div class="scoreboard-row">
+                    <div class="scoreboard-name cell">
+                        <img class="scoreboard-name-avatar" src="./assets/img/ttcp_logo.png">
+                        <label id="player1-name" class="scoreboard-name-label">Player 1</label>
+                    </div>
+                    <div class="scoreboard-sets cell" id="player1-sets">0</div>
+                    <div class="scoreboard-score cell" id="player1-score">0</div>
+                </div>
+                <div class="scoreboard-row">
+                    <div class="scoreboard-name cell">
+                        <img class="scoreboard-name-avatar" src="./assets/img/unknown.svg">
+                        <label id="player2-name" class="scoreboard-name-label">Player 2</label>
+                    </div>
+                    <div class="scoreboard-sets cell" id="player2-sets">0</div>
+                    <div class="scoreboard-score cell" id="player2-score">0</div>
+                </div>
+            </div>
+        </div>
+
+        <form class="form">
+            <p class="status">Status: <span id="status">Connecting to the server...</span></p>
+
+            <div class="options">
+                <div class="options-group">
+                    <p>Options:</p>
+                </div>
+                
+                <div class="options-group">
+                    <label for="options-manual">Manual</label>
+                    <input id="options-manual" type="checkbox" />
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <div class="player-form">
+                    <p>Player 1</p>
+                    <div>
+                        <label for="player1-input-name">Name</label>
+                        <input id="player1-input-name" type="text" placeholder="Enter name"/>
+                    </div>
+                    <div>
+                        <label for="player1-input-sets">Sets</label>
+                        <input id="player1-input-sets" type="number" placeholder="Enter set(s)" min="0" disabled/>
+                    </div>
+                    <div>
+                        <label for="player1-input-score">Score</label>
+                        <input id="player1-input-score" type="number" placeholder="Enter score" min="0"/>
+                    </div>
+                </div>
+                
+                <div class="player-form">
+                    <p>Player 2</p>
+                    <div>
+                        <label for="player2-input-name">Name</label>
+                        <input id="player2-input-name" type="text" placeholder="Enter name"/>
+                    </div>
+                    <div>
+                        <label for="player2-input-sets">Sets</label>
+                        <input id="player2-input-sets" type="number" placeholder="Enter set(s)" min="0" disabled/>
+                    </div>
+                    <div>
+                        <label for="player2-input-score">Score</label>
+                        <input id="player2-input-score" type="number" placeholder="Enter score" min="0"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="match-score">
+                <label for="match-score">Score (ex: 10 -7 -8 3 4)</label>
+                <input id="match-score" type="text" placeholder="Enter match score" disabled/>
+            </div>
+            
+
+            <div class="form-actions">
+                <button id="archive-match-button" type="button" onclick="archiveMatch()" disabled>Archive match</button>
+                <button type="button" onclick="resetMatch()">Reset match</button>
+                <button type="button" onclick="resetScores()">Reset scores</button>
+            </div>
+        </form>
+
+        <!-- <div class="gradient-container">
+            <div class="gradient">
+            </div>
+        </div> -->
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/pages/scoreboard/app.js"></script>
+</html>

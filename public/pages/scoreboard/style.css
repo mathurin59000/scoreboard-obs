@@ -1,0 +1,158 @@
+:root {
+    --white: #fffeff;
+    --blue: #0069b6;
+    --dark: #1c1c28;
+    --padding-cell: 0.5rem;
+}
+
+body {
+    background-color: var(--white);
+    font-size: 16px;
+    font-family: helvetica;
+    margin: 1px;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+}
+
+.scoreboard-container {
+    padding: 10px;
+}
+
+.scoreboard-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-wrap;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.scoreboard-row .cell {
+    border: 1px solid var(--dark);
+}
+
+.scoreboard-row .cell :not(:last-child) {
+    border-right: none;
+}
+
+.scoreboard-row:not(:last-child) {
+    border-bottom: none;
+}
+
+.scoreboard-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: var(--padding-cell);
+}
+
+.scoreboard-name-avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.scoreboard-name-label {
+    width: 100px;
+    overflow: hidden;
+    padding: var(--padding-cell);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.scoreboard-name img {
+    margin-right: 10px;
+}
+
+.scoreboard-sets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--dark);
+    padding: var(--padding-cell);
+    min-width: 32px;
+    font-weight: 700;
+}
+
+.scoreboard-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--dark);
+    padding: var(--padding-cell);
+    min-width: 32px;
+    font-weight: 700;
+}
+
+.form {
+    padding: 10px;
+}
+
+.form-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.player-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-form input {
+    height: 40px;
+}
+
+.match-score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 10px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.options-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.options-group label {
+    font-size: 16px;
+}
+
+.gradient-container {
+    background-color: green;
+    padding: 20px;
+}
+
+.gradient {
+    min-width: 200px;
+    width: 1000px;
+    height: 80px;
+    background: linear-gradient(0.75turn, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5), transparent);
+}
