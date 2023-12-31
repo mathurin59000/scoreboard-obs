@@ -15,6 +15,8 @@ resetRouter.post('/score', (req, res) => {
 
 resetRouter.post('/match', (req, res) => {
   console.log('POST /reset/match');
+  data.player1.name = 'Player 1';
+  data.player2.name = 'Player 2';
   data.player1.sets = 0;
   data.player2.sets = 0;
   data.player1.score = 0;

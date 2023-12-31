@@ -1,9 +1,9 @@
 :root {
     --white: #fffeff;
     --blue: #0069b6;
-    --dark: #1c1c28;
+    --dark: #1e2235;
     --padding-cell: 0.4rem;
-    --border-radius-item: 4px;
+    --border-radius-item: 0px;
 }
 
 body {
@@ -30,44 +30,54 @@ body {
     min-width: 800px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 16px;
     border: 2px solid var(--white);
     border-radius: var(--border-radius-item);
 }
 
 .matchs-list-item-player-1-name {
-    background-color: var(--dark);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--blue);
     color: var(--white);
     padding: var(--padding-cell);
     border-top-left-radius: var(--border-radius-item);
     border-bottom-left-radius: var(--border-radius-item);
     width: 100%;
-    text-align: left;
+    font-style: italic;
 }
 
 .matchs-list-item-player-2-name {
-    background-color: var(--dark);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--blue);
     color: var(--white);
     padding: var(--padding-cell);
     border-top-right-radius: var(--border-radius-item);
     border-bottom-right-radius: var(--border-radius-item);
     width: 100%;
-    text-align: right;
+    font-style: italic;
 }
 
 .matchs-list-item-player-1-score {
-    background-color: var(--white);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: var(--white);
     padding: var(--padding-cell);
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .matchs-list-item-player-2-score {
-    background-color: var(--white);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: var(--white);
     padding: var(--padding-cell);
     border-left: 2px solid var(--white);
+    font-size: 18px;
+    font-weight: 700;
 }

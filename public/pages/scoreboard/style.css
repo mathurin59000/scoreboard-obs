@@ -1,8 +1,11 @@
 :root {
     --white: #fffeff;
     --blue: #0069b6;
-    --dark: #1c1c28;
+    --dark: #1e2235;
     --padding-cell: 0.5rem;
+    --padding-cell-match-score: 0.5rem;
+    --padding-cell-match-score2: 0.25rem;
+    --border-radius-match-score: 4px;
 }
 
 body {
@@ -10,6 +13,68 @@ body {
     font-size: 16px;
     font-family: helvetica;
     margin: 1px;
+}
+
+.match {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+    padding: 10px;
+}
+
+.match-container {
+    display: flex;
+    align-items: stretch;
+}
+
+.match-team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    padding: var(--padding-cell-match-score);
+    gap: 10px;
+    font-size: 16px;
+    background-color: var(--blue);
+}
+
+.match-team-left {
+    padding-left: calc(var(--padding-cell-match-score) + 10px);
+    border-top-left-radius: var(--border-radius-match-score);
+    border-bottom-left-radius: var(--border-radius-match-score);
+    border: 2px solid var(--white);
+    border-right: none;
+}
+
+.match-team-right {
+    padding-right: calc(var(--padding-cell-match-score) + 10px);
+    border-top-right-radius: var(--border-radius-match-score);
+    border-bottom-right-radius: var(--border-radius-match-score);
+    border: 2px solid var(--white);
+    border-left: none;
+}
+
+.match-team-name-label {
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: var(--padding-cell-match-score);
+}
+
+.match-team-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 700;
+    background-color: var(--blue);
+    border: 2px solid var(--white);
+    border-left: none;
+    border-right: none;
+}
+
+.match-team-name-avatar {
+    width: 32px;
+    height: 32px;
 }
 
 .scoreboard {

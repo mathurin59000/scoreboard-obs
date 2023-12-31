@@ -1,12 +1,15 @@
 const socket = io();
 
-const matchsArchived = [];
+let matchsArchived = [];
 
 const options = {
   manual: false,
 };
 
 let matchScore = '';
+
+let team1Score = 0;
+let team2Score = 0;
 
 const player1 = {
   name: 'Player 1',
@@ -39,6 +42,8 @@ const player2Name = document.getElementById('player2-name');
 const player2Sets = document.getElementById('player2-sets');
 const player2Score = document.getElementById('player2-score');
 
+const matchTeamScore = document.getElementById('match-team-score');
+
 const archiveMatchButton = document.getElementById('archive-match-button');
 
 const initData = (data) => {
@@ -50,6 +55,28 @@ const initData = (data) => {
     player2.sets = data.player2.sets;
     player2.score = data.player2.score;
     matchScore = data.score;
+    matchsArchived = data.matchsArchived;
+
+    // Global match score
+    team1Score = 0;
+    team2Score = 0;
+    data.matchsArchived.forEach(({ score }) => {
+      const sets = score.split(' ');
+      let setsWonByPlayer1 = 0;
+      let setsWonByPlayer2 = 0;
+      sets.forEach((setScore) => {
+        if (!setScore.includes('-')) {
+          setsWonByPlayer1 += 1;
+        } else {
+          setsWonByPlayer2 += 1;
+        }
+      });
+      if (setsWonByPlayer1 > setsWonByPlayer2) {
+        team1Score += 1;
+      } else {
+        team2Score += 1;
+      }
+    });
 
     player1NameInput.value = data.player1.name;
     player1SetsInput.value = data.player1.sets;
@@ -100,6 +127,8 @@ const renderData = () => {
   player2Name.innerHTML = player2.name;
   player2Sets.innerHTML = player2.sets;
   player2Score.innerHTML = player2.score;
+
+  matchTeamScore.innerHTML = `${team1Score} - ${team2Score}`
 };
 
 socket.on('data', (data) => {
@@ -256,16 +285,22 @@ const resetMatch = async () => {
       method: 'POST',
     });
     const data = await response.json();
+    player1.name = data.player1.name;
+    player2.name = data.player2.name;
     player1.sets = data.player1.sets;
     player2.sets = data.player2.sets;
     player1.score = data.player1.score;
     player2.score = data.player2.score;
 
+    player1NameInput.value = data.player1.name;
+    player2NameInput.value = data.player2.name;
     player1SetsInput.value = data.player1.sets;
     player1ScoreInput.value = data.player1.score;
     player2SetsInput.value = data.player2.sets;
     player2ScoreInput.value = data.player2.score;
   } catch {
+    player1.name = 'Player 1';
+    player2.name = 'Player 2';
     player1.sets = 0;
     player2.sets = 0;
     player1.score = 0;
@@ -320,6 +355,23 @@ const archiveMatch = async () => {
     });
     const newMatchsArchived = await response.json();
     matchsArchived = newMatchsArchived;
+    newMatchsArchived.forEach(({ score }) => {
+      const sets = score.split(' ');
+      let setsWonByPlayer1 = 0;
+      let setsWonByPlayer2 = 0;
+      sets.forEach((setScore) => {
+        if (!setScore.includes('-')) {
+          setsWonByPlayer1 += 1;
+        } else {
+          setsWonByPlayer2 += 1;
+        }
+      });
+      if (setsWonByPlayer1 > setsWonByPlayer2) {
+        team1Score += 1;
+      } else {
+        team2Score += 1;
+      }
+    });
     await resetMatch();
   } catch (errorArchivingMatch) {
     console.debug(errorArchivingMatch);
